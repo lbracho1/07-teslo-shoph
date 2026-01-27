@@ -5,11 +5,11 @@ import { ShopLayouts } from './shop/layouts/ShopLayouts';
 import { HomePage } from './shop/pages/home/HomePage';
 import { ProductPage } from './shop/pages/product/ProductPage';
 import { GenderPage } from './shop/pages/gender/GenderPage';
-import { LoginPages } from './auth/pages/login/LoginPages';
 import { RegisterPage } from './auth/pages/register/RegisterPage';
 import { DashboardPage } from './admin/pages/dashboard/DashboardPage';
 import { AdminProductsPage } from './admin/pages/products/AdminProductsPage';
 import { AdminProductPage } from './admin/pages/product/AdminProductPage';
+import { LoginPages } from './auth/pages/login/LoginPage';
 
 const AuthLayout = lazy(() => import('./auth/layouts/AuthLayout'));
 const AdminLayout = lazy(() => import('./admin/layouts/AdminLayout'));

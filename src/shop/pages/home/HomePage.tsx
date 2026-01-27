@@ -1,11 +1,19 @@
-import { Button } from "@/components/ui/button"
+import { CustomPagination } from "@/components/custom/CustomPagination"
+import { ProductsGrid } from "@/shop/components"
+import { CustomJumbotron } from "@/shop/components/CustomJumbotron"
+import { useProducts } from "@/shop/hooks/useProducts"
 
 export const HomePage = () => {
+
+    const { data } = useProducts()
+
     return (
-        <div>
-            <h1 className="font-montserrat">Hola Mundo</h1>
-            <h1>Hola Mundo</h1>
-            <Button>Hola Mundo</Button>
-        </div>
+        <>
+            <CustomJumbotron title='Todos los productos' />
+
+            <ProductsGrid product={data?.products || []} />
+
+            <CustomPagination totalPages={data?.pages || 0} />
+        </>
     )
 }
