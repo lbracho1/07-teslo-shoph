@@ -45,7 +45,6 @@ export const useAuthStore = create<AuthState>()((set, get) => ({
             localStorage.setItem('token', data.token);
 
             set({ user: data.user, token: data.token, authStatus: 'authenticated' })
-            console.log({ data })
             return true;
         } catch (error) {
             localStorage.removeItem('token');
@@ -60,12 +59,18 @@ export const useAuthStore = create<AuthState>()((set, get) => ({
 
     register: async (email: string, password: string, fullName: string) => {
 
-        const data = await registerAction(email, password, fullName)
-        localStorage.setItem('token', data.token);
+        try {
+            const data = await registerAction(email, password, fullName)
+            localStorage.setItem('token', data.token);
 
-        set({ user: data.user, token: data.token, authStatus: 'authenticated' })
-
-        return true
+            set({ user: data.user, token: data.token, authStatus: 'authenticated' })
+            console.log({ data })
+            return true;
+        } catch (error) {
+            localStorage.removeItem('token');
+            set({ user: null, token: null, authStatus: 'not-authenticated' })
+            return false;
+        };
     },
 
     checkAuthStatus: async () => {
