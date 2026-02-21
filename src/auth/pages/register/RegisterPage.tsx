@@ -6,9 +6,9 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { CustomLogo } from "@/components/custom/CustomLogo";
+import { toast } from "sonner";
 
 import { useAuthStore } from "@/auth/store/auth.store";
-import { toast } from "sonner";
 
 export const RegisterPage = () => {
     const navigate = useNavigate();
@@ -27,6 +27,8 @@ export const RegisterPage = () => {
         const fullName = formData.get('fullName') as string;
 
         const isValid = await register(email, password, fullName);
+
+        console.log({ email, password, fullName });
 
         if (isValid) {
             navigate('/');
@@ -49,11 +51,11 @@ export const RegisterPage = () => {
                             </div>
                             <div className="grid gap-2">
                                 <Label htmlFor="fullName">Nombre de usuario</Label>
-                                <Input id="fullName" type="text" placeholder="Usuario" required />
+                                <Input id="fullName" type="text" name="fullName" placeholder="Usuario" required />
                             </div>
                             <div className="grid gap-2">
                                 <Label htmlFor="email">Ingrese su correo</Label>
-                                <Input id="email" type="email" placeholder="Correo@google.com" required />
+                                <Input id="email" type="email" name="email" placeholder="Correo@google.com" required />
                             </div>
 
                             <div className="grid gap-2">
@@ -61,7 +63,7 @@ export const RegisterPage = () => {
                                     <Label htmlFor="password"> Ingrese su contraseña</Label>
 
                                 </div>
-                                <Input id="password" type="password" required placeholder="12345678" />
+                                <Input id="password" type="password" name="password" required placeholder="12345678" />
                             </div>
                             <Button type="submit" className="w-full" disabled={isPosting}>
                                 Crear cuenta

@@ -9,7 +9,7 @@ export const registerAction = async (
 
     try {
 
-        const { data } = await tesloApi.post<AuthResponse>('/auth/login', {
+        const { data } = await tesloApi.post<AuthResponse>('/auth/register', {
             email,
             password,
             fullName,
