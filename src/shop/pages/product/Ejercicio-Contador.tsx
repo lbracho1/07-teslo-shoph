@@ -1,4 +1,4 @@
-import { useContStore } from "@/auth/store/auth.store"
+import { useContStore } from "@/auth/store/ejercico.auth.store";
 import { Button } from "@/components/ui/button"
 
 export const ProductPage = () => {
